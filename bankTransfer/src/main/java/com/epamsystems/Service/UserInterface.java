@@ -2,6 +2,7 @@ package com.epamsystems.Service;
 
 import com.epamsystems.DAO.User;
 
+import java.math.BigDecimal;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -14,38 +15,33 @@ public class UserInterface {
 
     public void getUsersChoice() {
         while (true) {
-            Scanner getChoice = new Scanner(System.in);
-            String choice = getChoice.next();
+            Scanner getInput = new Scanner(System.in);
+            String input = getInput.nextLine();
+            String[] splitInput = input.split(" ");
             System.out.println();
-            switch (choice.toLowerCase()) {
-                case "1":
-                    user.addAccount();
-                    printInputLine();
-                    break;
+            switch (splitInput[0]) {
                 case "addaccount":
                     user.addAccount();
                     printInputLine();
                     break;
-                case "2":
-                    user.showAccount();
-                    printInputLine();
-                    break;
                 case "showaccount":
-                    user.showAccount();
-                    printInputLine();
-                    break;
-                case "3":
-                    user.listAccounts();
+                    user.showAccount(Integer.parseInt(splitInput[1]));
                     printInputLine();
                     break;
                 case "listaccounts":
                     user.listAccounts();
                     printInputLine();
                     break;
+                case "transfer":
+                    user.transferMoney(Integer.valueOf(splitInput[1]), Integer.valueOf(splitInput[2]), BigDecimal.valueOf(Double.parseDouble(splitInput[3])));
+                    printInputLine();
+                    break;
                 case "exit":
                     System.exit(0);
                 default:
                     System.out.println("Unknown command\n");
+                    printInputLine();
+                    break;
             }
         }
     }

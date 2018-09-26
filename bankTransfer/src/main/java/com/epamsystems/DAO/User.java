@@ -29,7 +29,7 @@ public class User {
     private static BigDecimal getInitialBalance() {
         Scanner getInput = new Scanner(System.in);
         System.out.print("Enter initial balance: ");
-        return BigDecimal.valueOf(Long.parseLong(getInput.next()));
+        return BigDecimal.valueOf(Double.parseDouble(getInput.next()));
     }
 
     private static Currency getCurrency() {
@@ -47,16 +47,42 @@ public class User {
         return new Customer(name, surName);
     }
 
-    public void showAccount() {
-        Scanner getInput = new Scanner(System.in);
-        System.out.print("Enter account number: ");
-        int accountNumber = getInput.nextInt();
-        System.out.println(accounts.stream().filter(a -> a.getAccountNumber() == accountNumber).findAny().get().toString());
+    public void showAccount(int accountNumber) {
+        if (accounts.isEmpty()) {
+            System.out.println("Account not found!");
+        } else {
+            System.out.println(accounts.stream().filter(a -> a.getAccountNumber() == accountNumber).findAny().get().toString());
+        }
         System.out.println();
     }
 
     public void listAccounts() {
-        System.out.println("Accounts:\n");
-        accounts.stream().forEach(a -> System.out.println(a.toString() + "\n"));
+        if (accounts.isEmpty()) {
+            System.out.println("No accounts loaded!");
+        } else {
+            System.out.println("Accounts:\n");
+            accounts.stream().forEach(a -> System.out.println(a.toString() + "\n"));
+        }
+    }
+
+    public void transferMoney(int sourceAccount, int destinyAccount, BigDecimal amount) {
+        Account sourceAcc = accounts.stream().filter(a -> a.getAccountNumber() == sourceAccount).findAny().get();
+        Account destinyAcc = accounts.stream().filter(a -> a.getAccountNumber() == destinyAccount).findAny().get();
+
+        if (sourceAcc.getAccountBalance().compareTo(amount) < 0) {
+            System.out.println("Insufficient funds!");
+        } else if (sourceAcc.getAccountCurrency() == destinyAcc.getAccountCurrency()) {
+            sourceAcc.setAccountBalance(sourceAcc.getAccountBalance().subtract(amount));
+            destinyAcc.setAccountBalance(destinyAcc.getAccountBalance().add(amount));
+        } else {
+
+        }
+    }
+
+    private BigDecimal getAmountDivider(Currency sourceCurrency, Currency destinyCurrency) {
+        if (sourceCurrency == Currency.EUR) {
+
+        }
+        return null;
     }
 }

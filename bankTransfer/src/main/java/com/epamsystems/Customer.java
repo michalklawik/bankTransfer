@@ -1,18 +1,15 @@
 package com.epamsystems;
 
+import java.util.Objects;
+
 public class Customer {
 
-    private int id;
     private String name;
     private String surName;
-    private Account account;
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    public Customer(String name, String surName) {
+        this.name = name;
+        this.surName = surName;
     }
 
     public String getName() {
@@ -31,11 +28,25 @@ public class Customer {
         this.surName = surName;
     }
 
-    public Account getAccount() {
-        return account;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Customer customer = (Customer) o;
+        return Objects.equals(name, customer.name) &&
+                Objects.equals(surName, customer.surName);
     }
 
-    public void setAccount(Account account) {
-        this.account = account;
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, surName);
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "name='" + name + '\'' +
+                ", surName='" + surName + '\'' +
+                '}';
     }
 }

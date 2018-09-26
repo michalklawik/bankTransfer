@@ -6,8 +6,9 @@ public class App
 {
     public static void main( String[] args )
     {
+        UserInterface userInterface = new UserInterface();
         UserInterface.printMainMenu();
         Scanner scanner = new Scanner(System.in);
-        UserInterface.getUsersChoice(scanner.next());
+        userInterface.getUsersChoice(scanner.next());
     }
 }

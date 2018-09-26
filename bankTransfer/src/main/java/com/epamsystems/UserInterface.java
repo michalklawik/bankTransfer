@@ -2,6 +2,8 @@ package com.epamsystems;
 
 public class UserInterface {
 
+    User user = new User();
+
     public static void printMainMenu() {
         System.out.println("Please choose an option:");
         System.out.println("1. Add account.");
@@ -9,30 +11,34 @@ public class UserInterface {
         System.out.println("3. List accounts.");
     }
 
-    public static void getUsersChoice(String choice) {
-        switch (choice.toLowerCase()) {
-            case "1":
-                System.out.println("First option chosen");
-                break;
-            case "add account":
-                System.out.println("First option chosen");
-                break;
-            case "2":
-                System.out.println("Second option chosen");
-                break;
-            case "show account":
-                System.out.println("Second option chosen");
-                break;
-            case "3":
-                System.out.println("Third option chosen");
-                break;
-            case "list accounts":
-                System.out.println("Third option chosen");
-                break;
-            case "exit":
-                System.exit(0);
-            default:
-                System.out.println("Unknown command");
+    public void getUsersChoice(String choice) {
+        while (true) {
+            switch (choice.toLowerCase()) {
+                case "1":
+                    user.addAccount();
+                    break;
+                case "addaccount":
+                    user.addAccount();
+                    break;
+                case "2":
+                    System.out.println("Second option chosen");
+                    break;
+                case "showaccount":
+                    System.out.println("Second option chosen");
+                    break;
+                case "3":
+                    System.out.println("Third option chosen");
+                    break;
+                case "listaccounts":
+                    System.out.println("Third option chosen");
+                    break;
+                case "exit":
+                    System.exit(0);
+                default:
+                    System.out.println("Unknown command\n");
+            }
         }
     }
+
+
 }

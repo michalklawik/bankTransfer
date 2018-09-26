@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+
 public class User {
 
     private List<Account> accounts = new ArrayList<>();
@@ -69,6 +70,8 @@ public class User {
         Account sourceAcc = accounts.stream().filter(a -> a.getAccountNumber() == sourceAccount).findAny().get();
         Account destinyAcc = accounts.stream().filter(a -> a.getAccountNumber() == destinyAccount).findAny().get();
 
+        BigDecimal amountMultiplyer = getAmountMultiplyer(sourceAcc.getAccountCurrency(), destinyAcc.getAccountCurrency());
+
         if (sourceAcc.getAccountBalance().compareTo(amount) < 0) {
             System.out.println("Insufficient funds!");
         } else if (sourceAcc.getAccountCurrency() == destinyAcc.getAccountCurrency()) {
@@ -79,10 +82,20 @@ public class User {
         }
     }
 
-    private BigDecimal getAmountDivider(Currency sourceCurrency, Currency destinyCurrency) {
-        if (sourceCurrency == Currency.EUR) {
-
+    private BigDecimal getAmountMultiplyer(Currency sourceCurrency, Currency destinyCurrency) {
+        if (sourceCurrency == Currency.PLN && destinyCurrency == Currency.EUR) {
+            return BigDecimal.valueOf(1/4.2857);
+        } else if (sourceCurrency == Currency.PLN && destinyCurrency == Currency.USD) {
+            return BigDecimal.valueOf(1/3.6430);
+        } else if (sourceCurrency == Currency.USD && destinyCurrency == Currency.PLN) {
+            return BigDecimal.valueOf(3.6430);
+        } else if (sourceCurrency == Currency.USD && destinyCurrency == Currency.EUR) {
+            return BigDecimal.valueOf(3.6430/4.2857);
+        } else if (sourceCurrency == Currency.EUR && destinyCurrency == Currency.PLN) {
+            return BigDecimal.valueOf(4.2857);
+        } else if (sourceCurrency == Currency.EUR && destinyCurrency == Currency.USD) {
+            return BigDecimal.valueOf(4.2857/3.6430);
         }
-        return null;
+        return BigDecimal.valueOf(0);
     }
 }

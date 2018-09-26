@@ -1,4 +1,4 @@
-package com.epamsystems;
+package com.epamsystems.DAO;
 
 public enum Currency {
     PLN,

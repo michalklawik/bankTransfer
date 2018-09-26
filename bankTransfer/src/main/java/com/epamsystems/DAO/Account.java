@@ -1,4 +1,4 @@
-package com.epamsystems;
+package com.epamsystems.DAO;
 
 import java.math.BigDecimal;
 import java.util.Objects;

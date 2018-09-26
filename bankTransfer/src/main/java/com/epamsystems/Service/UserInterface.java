@@ -1,4 +1,6 @@
-package com.epamsystems;
+package com.epamsystems.Service;
+
+import com.epamsystems.DAO.User;
 
 import java.util.Scanner;
 
@@ -6,43 +8,39 @@ public class UserInterface {
 
     User user = new User();
 
-    public static void printMainMenu() {
-        System.out.println("Please choose an option:");
-        System.out.println("1. Add account.");
-        System.out.println("2. Show Account.");
-        System.out.println("3. List accounts.");
+    public static void printInputLine() {
+        System.out.print("Transfer> ");
     }
 
     public void getUsersChoice() {
         while (true) {
-            System.out.print("Enter selection: ");
             Scanner getChoice = new Scanner(System.in);
             String choice = getChoice.next();
             System.out.println();
             switch (choice.toLowerCase()) {
                 case "1":
                     user.addAccount();
-                    printMainMenu();
+                    printInputLine();
                     break;
                 case "addaccount":
                     user.addAccount();
-                    printMainMenu();
+                    printInputLine();
                     break;
                 case "2":
                     user.showAccount();
-                    printMainMenu();
+                    printInputLine();
                     break;
                 case "showaccount":
                     user.showAccount();
-                    printMainMenu();
+                    printInputLine();
                     break;
                 case "3":
                     user.listAccounts();
-                    printMainMenu();
+                    printInputLine();
                     break;
                 case "listaccounts":
                     user.listAccounts();
-                    printMainMenu();
+                    printInputLine();
                     break;
                 case "exit":
                     System.exit(0);

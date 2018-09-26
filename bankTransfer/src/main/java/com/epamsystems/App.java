@@ -9,6 +9,6 @@ public class App
         UserInterface userInterface = new UserInterface();
         UserInterface.printMainMenu();
         Scanner scanner = new Scanner(System.in);
-        userInterface.getUsersChoice(scanner.next());
+        userInterface.getUsersChoice();
     }
 }

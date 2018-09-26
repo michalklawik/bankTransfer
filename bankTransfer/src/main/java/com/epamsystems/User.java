@@ -23,6 +23,7 @@ public class User {
         Currency currency = getCurrency();
         BigDecimal initialBalance = getInitialBalance();
         Account account = new Account(accounts.size() + 1, initialBalance, currency, customer);
+        accounts.add(account);
         System.out.println("Account added: \n" + account.toString());
     }
 
@@ -45,5 +46,12 @@ public class User {
         System.out.print("Enter customer surname: ");
         String surName = getInput.next();
         return new Customer(name, surName);
+    }
+
+    public void showAccount() {
+        Scanner getInput = new Scanner(System.in);
+        System.out.println("Enter account number: ");
+        int accountNumber = getInput.nextInt();
+        System.out.println(accounts.stream().filter(a -> a.getAccountNumber() == accountNumber).findAny().get().toString());
     }
 }

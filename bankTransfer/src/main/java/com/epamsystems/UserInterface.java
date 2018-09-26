@@ -1,5 +1,7 @@
 package com.epamsystems;
 
+import java.util.Scanner;
+
 public class UserInterface {
 
     User user = new User();
@@ -11,26 +13,35 @@ public class UserInterface {
         System.out.println("3. List accounts.");
     }
 
-    public void getUsersChoice(String choice) {
+    public void getUsersChoice() {
         while (true) {
+            System.out.print("Enter selection: ");
+            Scanner getChoice = new Scanner(System.in);
+            String choice = getChoice.next();
             switch (choice.toLowerCase()) {
                 case "1":
                     user.addAccount();
+                    printMainMenu();
                     break;
                 case "addaccount":
                     user.addAccount();
+                    printMainMenu();
                     break;
                 case "2":
-                    System.out.println("Second option chosen");
+                    user.showAccount();
+                    printMainMenu();
                     break;
                 case "showaccount":
-                    System.out.println("Second option chosen");
+                    user.showAccount();
+                    printMainMenu();
                     break;
                 case "3":
                     System.out.println("Third option chosen");
+                    printMainMenu();
                     break;
                 case "listaccounts":
                     System.out.println("Third option chosen");
+                    printMainMenu();
                     break;
                 case "exit":
                     System.exit(0);

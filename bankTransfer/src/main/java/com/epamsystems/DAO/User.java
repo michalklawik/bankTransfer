@@ -78,7 +78,8 @@ public class User {
             sourceAcc.setAccountBalance(sourceAcc.getAccountBalance().subtract(amount));
             destinyAcc.setAccountBalance(destinyAcc.getAccountBalance().add(amount));
         } else {
-
+            sourceAcc.setAccountBalance(sourceAcc.getAccountBalance().subtract(amount.multiply(amountMultiplyer)));
+            destinyAcc.setAccountBalance(destinyAcc.getAccountBalance().add(amount.multiply(amountMultiplyer)));
         }
     }
 

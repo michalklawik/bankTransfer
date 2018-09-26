@@ -18,16 +18,16 @@ public class UserInterface {
                 System.out.println("First option chosen");
                 break;
             case "2":
-                System.out.println("First option chosen");
+                System.out.println("Second option chosen");
                 break;
             case "show account":
-                System.out.println("First option chosen");
+                System.out.println("Second option chosen");
                 break;
             case "3":
-                System.out.println("First option chosen");
+                System.out.println("Third option chosen");
                 break;
             case "list accounts":
-                System.out.println("First option chosen");
+                System.out.println("Third option chosen");
                 break;
             case "exit":
                 System.exit(0);

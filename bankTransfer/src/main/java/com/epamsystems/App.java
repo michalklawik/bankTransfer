@@ -1,13 +1,13 @@
 package com.epamsystems;
 
-/**
- * Hello world!
- *
- */
-public class App 
+import java.util.Scanner;
+
+public class App
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+        UserInterface.printMainMenu();
+        Scanner scanner = new Scanner(System.in);
+        UserInterface.getUsersChoice(scanner.next());
     }
 }

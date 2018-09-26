@@ -18,6 +18,7 @@ public class UserInterface {
             System.out.print("Enter selection: ");
             Scanner getChoice = new Scanner(System.in);
             String choice = getChoice.next();
+            System.out.println();
             switch (choice.toLowerCase()) {
                 case "1":
                     user.addAccount();
@@ -36,11 +37,11 @@ public class UserInterface {
                     printMainMenu();
                     break;
                 case "3":
-                    System.out.println("Third option chosen");
+                    user.listAccounts();
                     printMainMenu();
                     break;
                 case "listaccounts":
-                    System.out.println("Third option chosen");
+                    user.listAccounts();
                     printMainMenu();
                     break;
                 case "exit":

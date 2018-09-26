@@ -3,7 +3,6 @@ package com.epamsystems;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.Scanner;
 
 public class User {
@@ -24,19 +23,19 @@ public class User {
         BigDecimal initialBalance = getInitialBalance();
         Account account = new Account(accounts.size() + 1, initialBalance, currency, customer);
         accounts.add(account);
-        System.out.println("Account added: \n" + account.toString());
+        System.out.println("Account added: \n" + account.toString() + "\n");
     }
 
     private static BigDecimal getInitialBalance() {
         Scanner getInput = new Scanner(System.in);
         System.out.print("Enter initial balance: ");
-        return BigDecimal.valueOf(Long.parseLong(Optional.ofNullable(getInput.next()).orElse(String.valueOf(0))));
+        return BigDecimal.valueOf(Long.parseLong(getInput.next()));
     }
 
     private static Currency getCurrency() {
         Scanner getInput = new Scanner(System.in);
         System.out.print("Enter account currency: ");
-        return Currency.valueOf(Optional.ofNullable(getInput.next()).orElse("PLN"));
+        return Currency.valueOf(getInput.next().toUpperCase());
     }
 
     private static Customer getCustomer() {
@@ -50,8 +49,14 @@ public class User {
 
     public void showAccount() {
         Scanner getInput = new Scanner(System.in);
-        System.out.println("Enter account number: ");
+        System.out.print("Enter account number: ");
         int accountNumber = getInput.nextInt();
         System.out.println(accounts.stream().filter(a -> a.getAccountNumber() == accountNumber).findAny().get().toString());
+        System.out.println();
+    }
+
+    public void listAccounts() {
+        System.out.println("Accounts:\n");
+        accounts.stream().forEach(a -> System.out.println(a.toString() + "\n"));
     }
 }

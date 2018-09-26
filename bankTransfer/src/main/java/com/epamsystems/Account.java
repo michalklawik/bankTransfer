@@ -7,6 +7,15 @@ public class Account {
     private int accountNumber;
     private BigDecimal accountBalance;
     private Currency accountCurrency;
+    private Customer customer;
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
 
     public int getAccountNumber() {
         return accountNumber;

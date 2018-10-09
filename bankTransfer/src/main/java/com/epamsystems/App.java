@@ -2,7 +2,6 @@ package com.epamsystems;
 
 import com.epamsystems.Service.UserInterface;
 
-import java.util.Scanner;
 
 public class App
 {
@@ -10,7 +9,6 @@ public class App
     {
         UserInterface userInterface = new UserInterface();
         UserInterface.printInputLine();
-        Scanner scanner = new Scanner(System.in);
         userInterface.getUsersChoice();
     }
 }

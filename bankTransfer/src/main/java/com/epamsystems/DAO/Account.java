@@ -1,7 +1,11 @@
 package com.epamsystems.DAO;
 
 import java.math.BigDecimal;
+import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Objects;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class Account {
 
@@ -15,6 +19,18 @@ public class Account {
         this.accountBalance = accountBalance;
         this.accountCurrency = accountCurrency;
         this.customer = customer;
+    }
+
+    public static List<Account> getAccounts(List<String> csvAccounts) {
+        Function<String, Account> createAccount = s -> new Account(Integer.valueOf(s.split(",")[0]),
+                BigDecimal.valueOf(Double.valueOf(s.split(",")[3])),
+                Currency.valueOf(s.split(",")[4].toUpperCase()),
+                new Customer(s.split(",")[1], s.split(",")[2]));
+        return csvAccounts.stream().map(createAccount).collect(Collectors.toList());
+    }
+
+    public static Account getAccount(List<Account> accounts, int accountNumber) {
+        return accounts.stream().filter(a -> a.getAccountNumber() == accountNumber).findFirst().orElseThrow(NoSuchElementException::new);
     }
 
     public Customer getCustomer() {
